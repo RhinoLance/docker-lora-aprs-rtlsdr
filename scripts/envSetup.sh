@@ -7,9 +7,15 @@ then
         export LORA_APRS=/lora-aprs
 fi
 
-apk update
-apk add rtl-sdr
+###################################
+# Install prerequisites
+###################################
+apt update
+apt install rtl-sdr wget -y
 
+# clean up apt cache to reduce image size
+apt autoremove && apt clean
+rm -rf /var/lib/apt/lists/*
 
 ###################################
 # dxlAPRS installation
@@ -42,3 +48,4 @@ wget http://www.do2jmg.de/download/lora.sh
 #wget http://www.do2jmg.de/download/beacon.txt
 
 chmod +x lora.sh
+
