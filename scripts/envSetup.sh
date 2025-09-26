@@ -48,4 +48,7 @@ wget http://www.do2jmg.de/download/lora.sh
 #wget http://www.do2jmg.de/download/beacon.txt
 
 chmod +x lora.sh
+chmod +x scripts/startup.sh
 
+# Seed the log files
+touch /tmp/lora-aprs.log /tmp/lorarx.log /tmp/udpgate4.log /tmp/sdrtst.log /tmp/rtl_tcp.log

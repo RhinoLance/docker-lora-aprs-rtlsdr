@@ -8,3 +8,4 @@ COPY scripts/envSetup.sh /
 # layer to the image, whilst maintaining readability.
 RUN chmod +x ./envSetup.sh && \
 	. ./envSetup.sh varsAreSet
+ENTRYPOINT /scripts/startup.sh
