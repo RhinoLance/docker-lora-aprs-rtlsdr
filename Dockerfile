@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM debian:trixie-slim
 
 ENV LORA_APRS=/lora-aprs
 
