@@ -1,0 +1,44 @@
+# if an varsAreSet arg is not passed, then set the vars
+if [ -z "$varsAreSet" ]
+then
+        ###################################
+        # Set environment variables
+        ###################################
+        export LORA_APRS=/lora-aprs
+fi
+
+apk update
+apk add rtl-sdr
+
+
+###################################
+# dxlAPRS installation
+###################################
+
+# Create directories
+cd /
+mkdir lora-aprs
+cd lora-aprs
+mkdir bin
+mkdir pidfiles
+mkdir fifos
+
+# Download binaries
+cd $LORA_APRS/bin
+wget http://oe5dxl.hamspirit.at:8025/aprs/bin/armv7hf/lorarx
+wget http://oe5dxl.hamspirit.at:8025/aprs/bin/armv7hf/udpgate4
+wget http://oe5dxl.hamspirit.at:8025/aprs/bin/armv7hf/sdrtst
+
+# Make binaries executable
+chmod +x lorarx
+chmod +x udpgate4
+chmod +x sdrtst
+
+# Download the main script and config files
+cd $LORA_APRS
+wget http://www.do2jmg.de/download/lora.sh
+#wget http://www.do2jmg.de/download/qrg.txt
+#wget http://www.do2jmg.de/download/lora-options.conf
+#wget http://www.do2jmg.de/download/beacon.txt
+
+chmod +x lora.sh
